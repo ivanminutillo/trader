@@ -20,7 +20,8 @@
         "skill/valory/check_stop_trading_abci/0.1.0": "bafybeidyc5fvw5wosbc3anxxxog5b67cfmvrsrltjh3cfllye3bb43r3z4",
         "agent/valory/trader/0.1.0": "bafybeicnz4vh3tzszfu6zgpn433ipzd7evj6vtxlwnsfaahruav6pivijm",
         "agent/eightballer/trader/0.1.0": "bafybeiarxgeydvkfi4ww3qf7gstmax6h6djykxbzgbevwpjxnto6jmriq4",
-        "service/valory/trader/0.1.0": "bafybeihugrkov7ihw7u2hzv6cq4mrgdxjvjklqqkskfl7jrv65fdhtqnbu"
+        "service/valory/trader/0.1.0": "bafybeihugrkov7ihw7u2hzv6cq4mrgdxjvjklqqkskfl7jrv65fdhtqnbu",
+        "service/eightballer/trader/0.1.0": "bafybeib5nj3dustqeikdgovac5sbqkpelmdzblhgpiuhakk3hrpya7pgla"
     },
     "third_party": {
         "protocol/open_aea/signing/1.0.0": "bafybeihv62fim3wl2bayavfcg3u5e5cxu3b7brtu4cn5xoxd6lqwachasi",
