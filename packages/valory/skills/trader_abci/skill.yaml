@@ -8,8 +8,8 @@ aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   README.md: bafybeiab4xgadptz4mhvno4p6xvkh7p4peg7iuhotabydriu74dmj6ljga
   __init__.py: bafybeido7wa33h4dtleap57vzgyb4fsofk4vindsqcekyfo5i56i2rll2a
-  behaviours.py: bafybeigc6hszbu66ccajny5eh7thfgsrlr36je4mzziwp4mupgvtaeu6aa
-  composition.py: bafybeib7mrc7xjqx3qy5wlxphlsrmwvzqduf2hzn62s7fgux5contywiki
+  behaviours.py: bafybeien33dglqdyi33ayvxzmgekeum56dllrky3rgb5jqfirlaigc2m6u
+  composition.py: bafybeihqcmtdwp5gn4heiifcja7peax36dk6d34udijyzqjdvk2wleuzhi
   dialogues.py: bafybeiebofyykseqp3fmif36cqmmyf3k7d2zbocpl6t6wnlpv4szghrxbm
   fsm_specification.yaml: bafybeigwqrxxah3c55ome4qffl7ck53hrk2uencz3lym6unfof6qakeqoe
   handlers.py: bafybeibkiqwe7hoqccjirimd44nzeqkabc7oo74romqklssion27s5sa2a
@@ -19,6 +19,7 @@ connections: []
 contracts: []
 protocols: []
 skills:
+- eightballer/ui_loader_abci:0.1.0:bafybeic7wsqam7vydfexzjbef6xdgns56lphnz7x2w7fvm4toydrxrtfv4
 - valory/abstract_round_abci:0.1.0:bafybeih3enhagoql7kzpeyzzu2scpkif6y3ubakpralfnwxcvxexdyvy5i
 - valory/registration_abci:0.1.0:bafybeiek7zcsxbucjwzgqfftafhfrocvc7q4yxllh2q44jeemsjxg3rcfm
 - valory/reset_pause_abci:0.1.0:bafybeidw4mbx3os3hmv7ley7b3g3gja7ydpitr7mxbjpwzxin2mzyt5yam

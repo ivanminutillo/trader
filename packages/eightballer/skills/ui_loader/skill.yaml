@@ -1,0 +1,29 @@
+name: ui_loader
+author: eightballer
+version: 0.1.0
+type: skill
+description: A skill that loads the UI for the trader skill. Isolated from the ABCI
+  server, such that seperate HTTP server can be used to serve the UI and associated
+  files.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  __init__.py: bafybeiaxx4sbrowwx4qa6dqzz4ueennoc5nxf5whkkfkxht3co5dzxidxu
+  behaviours.py: bafybeicwex4jufqv5gblpbwhudql5cx2dh4cn7o5fcx34lid2u3nmjhgfy
+  handlers.py: bafybeiezwf4y6fw27xo4xxlf5wpmzcml36lnrb34jqbzcpzivapbjhawmm
+  strategy.py: bafybeidr62e6y27dtzorxpmbu2eo6df6rklln3v56jzwsj6svxhwz2lufe
+fingerprint_ignore_patterns: []
+connections: []
+contracts: []
+protocols: []
+skills: []
+behaviours: {}
+handlers: {}
+models:
+  ui_model:
+    args:
+      frontend_component_id: null
+    class_name: UiLoaderStrategy
+dependencies: {}
+is_abstract: false
+customs: []
