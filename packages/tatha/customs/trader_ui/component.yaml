@@ -11,5 +11,5 @@ fingerprint:
   openapi3_spec.yaml: bafybeiagdbghwj4t4o7uctojvtkjp7i6zxpwu6dltjsawcaeuteyipftty
 fingerprint_ignore_patterns: []
 dependencies: {}
-api_spec: open_api_spec.yaml
-frontend_dir: frontend
+api_spec: open_api3_spec.yaml
+frontend_dir: build
