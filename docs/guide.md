@@ -14,6 +14,8 @@ The ABCI frontend loader is designed to not interfer with agent development and 
 
 The frontend components are defined as `custom_components` and are loaded by the frontend loader.
 
+Please see [Tatha's Trader UI](../packages/tatha/customs/trader_ui)
+
 ### Current Features.
 
 - Generate routes from the `build` directory.
@@ -187,6 +189,9 @@ models:
         enabled: true
         custom_component: tatha/trader_ui
 ```
+
+
+
 
 
 ## Roadmap 

@@ -93,7 +93,7 @@ class UserInterfaceHttpHandler(BaseHttpHandler):
         """
         parts = message.url.split("/")
         headers = "Content-Type: application/json; charset=utf-8\n"
-        content = {}
+        data = {}
         if len(parts) < 4:
             # in a later iteration we should return the open-api spec here.
             return headers, json.dumps(content).encode("utf-8")
@@ -105,7 +105,7 @@ class UserInterfaceHttpHandler(BaseHttpHandler):
                 "agent-address": self.context.agent_address,
                 "agent-status": "active" if self.context.is_active else "inactive",
             }
-            content = json.dumps(data).encode("utf-8")
+        content = json.dumps(data).encode("utf-8")
         return headers, content
 
     def handle_frontend_request(self, message: UiHttpMessage, dialogue) -> bytes:
