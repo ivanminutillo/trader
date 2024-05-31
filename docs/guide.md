@@ -19,6 +19,38 @@ The frontend components are defined as `custom_components` and are loaded by the
 - Generate routes from the `build` directory.
 - enable `API` routes from the `openapi3_spec.yaml` file.
 - ABCI spec with healthcheck for the served frontend.
+
+```mermaid
+alphabet_in:
+  - DONE
+  - ERROR
+
+default_start_state: SetupRound
+
+final_states:
+  - DoneRound
+
+label: ComponentLoadingAbciApp
+
+start_states:
+  - SetupRound
+  - HealthcheckRound
+
+states:
+  - SetupRound
+  - HealthcheckRound
+  - DoneRound
+  - ErrorRound
+
+transition_func:
+  (SetupRound, DONE): HealthcheckRound
+  (SetupRound, ERROR): ErrorRound
+  (HealthcheckRound, DONE): DoneRound
+  (HealthcheckRound, ERROR): ErrorRound
+  (ErrorRound, DONE): SetupRound
+```
+
+
 - Independant Protocols and servers for the frontend components meaning no interaction with core skills.
 
 
