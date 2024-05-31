@@ -8,12 +8,12 @@ aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeib4t4ay6kfjokq3cydparpzs4zllyl2yujvfsbc24xogwyxsswaqy
   abci_spec.yaml: bafybeig6ffhlqu4w23dwjl7r46hfc63t6vfzr5d7owc2ffcosdrzlfaieu
-  behaviours.py: bafybeigcpsvrypnaoet6h2mrzmqt2mkib3twc4o37u5mrae4izrwsw5y2y
-  dialogues.py: bafybeigylcqyr7jeqhftxdyb6cemuzbdbdp4wa4svz4hr5wisb6gegiepy
-  handlers.py: bafybeiaypxailf3hnfrib3ll7b5godmc3wejyjqs5ew2ftu3uyqobnqtn4
-  models.py: bafybeihq4vwfqilrb7bo2f35bfpyjxgxccbjfkuy2abqb36mpetjwo6bni
-  payloads.py: bafybeidey2moyrizoiedme6tqvan6qs3tccdrkvze5kuugbi7bijq6yinu
-  rounds.py: bafybeigzilskakyks57z2dp6t7xkdifvbqpeucofxg4hgzgaiibkzykopq
+  behaviours.py: bafybeih4aqisyumzswctjauodcvql6eia2qsg33zcmdwvjvtgtat6iqsre
+  dialogues.py: bafybeial6fjbtsjuxrokmkuglfi5xemkdv7vrpfukczmxmd3t6rrrwkgcu
+  handlers.py: bafybeiesaha33nk5q34gg6jjyypi2uipsxturzlbklkopgfltjnyezfdsy
+  models.py: bafybeie52pinej25o7cuzligliouzvbxpip6tf6fzgj6kbibk3sr25izxq
+  payloads.py: bafybeicejrehsaagpwct6bozr7jh73gyx7ewkipk3z7d3khgqejcn5ze6y
+  rounds.py: bafybeidzuvf2c2d2gmpte5f3gkbuht6ehk5o4tyxvryjxedzl65kckphrm
   tests/__init__.py: bafybeifigp64li3j3yidpan5arc27etm3jytadjsckjaidrem57hst73ry
   tests/test_behaviours.py: bafybeicyhiityyw7sm7hs34gbrtv6dxg3xaxkoos5qy65qe4p2rqdksopq
   tests/test_dialogues.py: bafybeieb67vvwpslksvuz2sdbftfhfg74cekbqrp7ekjsmwz3wzxf45cjy
@@ -24,7 +24,8 @@ fingerprint:
 fingerprint_ignore_patterns: []
 connections: []
 contracts: []
-protocols: []
+protocols:
+- eightballer/http:0.1.0:bafybeibels7dv7ucflaeniwifbisvkegm5vrarrr5ctkcqebg4t7onba6a
 skills:
 - valory/abstract_round_abci:0.1.0:bafybeih3enhagoql7kzpeyzzu2scpkif6y3ubakpralfnwxcvxexdyvy5i
 behaviours:
@@ -41,6 +42,9 @@ handlers:
   http:
     args: {}
     class_name: HttpHandler
+  user_interface_http:
+    args: {}
+    class_name: UserInterfaceHttpHandler
   ipfs:
     args: {}
     class_name: IpfsHandler
@@ -67,6 +71,9 @@ models:
   http_dialogues:
     args: {}
     class_name: HttpDialogues
+  user_interface_http_dialogues:
+    args: {}
+    class_name: UserInterfaceHttpDialogues
   ipfs_dialogues:
     args: {}
     class_name: IpfsDialogues
@@ -75,6 +82,9 @@ models:
     class_name: LedgerApiDialogues
   params:
     args:
+      user_interface:
+        enabled: false
+        custom_component: null
       cleanup_history_depth: 1
       cleanup_history_depth_current: null
       drand_public_key: 868f005eb8e6e4ca0a47c8a77ceaa5309a47978a7c71bc5cce96366b5d7a569937c529eeda66c7293784a9402801af31

@@ -27,17 +27,14 @@ paths:
               schema:
                 type: object
                 properties:
-                  agent:
-                    type: object
-                    properties:
-                      serviceid:
-                        type: string
-                      safe-address:
-                        type: string
-                      agent-address:
-                        type: string
-                      agent-status:
-                        type: string
+                  service-id:
+                    type: string
+                  safe-address:
+                    type: string
+                  agent-address:
+                    type: string
+                  agent-status:
+                    type: string
   api/mech-events:
     get:
       summary: Returns the list of mech events and the info for each event

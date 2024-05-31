@@ -27,6 +27,8 @@ export MAS_ADDRESS=$(echo -n $(cat $MAS_KEYPATH | jq '.[].address' -r))
 echo "Using Address: $MAS_ADDRESS"
 
 
+export ALL_PARTICIPANTS="[\"$MAS_ADDRESS\"]"
+
 # if the service name is not set, we hard exit
 if [ -z "$1" ]; then
     echo "Service name is not set!"

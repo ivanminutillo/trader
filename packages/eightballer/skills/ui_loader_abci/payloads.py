@@ -20,6 +20,7 @@
 """This module contains the transaction payloads of the ComponentLoadingAbciApp."""
 
 from dataclasses import dataclass
+from typing import Optional
 
 from packages.valory.skills.abstract_round_abci.base import BaseTxPayload
 
@@ -27,19 +28,19 @@ from packages.valory.skills.abstract_round_abci.base import BaseTxPayload
 @dataclass(frozen=True)
 class ErrorPayload(BaseTxPayload):
     """Represent a transaction payload for the ErrorRound."""
-    data: str
-
+    error_data: Optional[str]
 
 
 @dataclass(frozen=True)
 class HealthcheckPayload(BaseTxPayload):
     """Represent a transaction payload for the HealthcheckRound."""
-    data: str
+    health_data: Optional[str]
 
 
 @dataclass(frozen=True)
 class SetupPayload(BaseTxPayload):
     """Represent a transaction payload for the SetupRound."""
-    data: str
+    setup_data: Optional[str]
+
 
 

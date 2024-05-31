@@ -19,6 +19,7 @@
 
 """This module contains the shared state for the abci skill of ComponentLoadingAbciApp."""
 
+from typing import Any
 from packages.valory.skills.abstract_round_abci.models import BaseParams
 from packages.valory.skills.abstract_round_abci.models import (
     BenchmarkTool as BaseBenchmarkTool,
@@ -36,6 +37,22 @@ class SharedState(BaseSharedState):
     abci_app_cls = ComponentLoadingAbciApp
 
 
-Params = BaseParams
+class UserInterfaceLoaderParams(BaseParams):
+    """Keep the current params of the skill."""
+
+
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        """Initialize the parameters' object."""
+        # this is a mapping from a prediction market spec's attribute to the creators we want to take into account
+        user_interface_config = kwargs.get("user_interface")
+        self.user_interface_enabled = user_interface_config.get('enabled', False)
+        if self.user_interface_enabled:
+            custom_component_name = user_interface_config.get('custom_component',)
+            self.user_interface_name = custom_component_name
+        super().__init__(*args, **kwargs)
+
+
+
+Params = UserInterfaceLoaderParams
 Requests = BaseRequests
 BenchmarkTool = BaseBenchmarkTool

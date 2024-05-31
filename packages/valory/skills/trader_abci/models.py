@@ -68,6 +68,7 @@ from packages.valory.skills.transaction_settlement_abci.rounds import Event as T
 from packages.valory.skills.tx_settlement_multiplexer_abci.models import (
     TxSettlementMultiplexerParams,
 )
+from packages.eightballer.skills.ui_loader_abci.models import UserInterfaceLoaderParams
 
 
 EventType = Union[
@@ -106,6 +107,7 @@ class TraderParams(
     TerminationParams,
     TxSettlementMultiplexerParams,
     CheckStopTradingParams,  # It also contains StakingParams
+    UserInterfaceLoaderParams,
 ):
     """A model to represent the trader params."""
 
