@@ -3,10 +3,9 @@
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Getting Started](#getting-started)
-3. [Project Structure](#project-structure)
-4. [Development](#development)
-5. [Testing](#testing)
+2. [Frontend Compoenent Specification](#frontend-specification)
+3. [Agent Configuration](#agent-configuration)
+4. [Roadmap](#roadmap)
 
 ## Introduction
 The purpose the frontend loader ui ABCI is to provide an easy means for frontend developers the ability to develop frontends to be served by Agents.
@@ -14,6 +13,47 @@ The purpose the frontend loader ui ABCI is to provide an easy means for frontend
 The ABCI frontend loader is designed to not interfer with agent development and applications, but rather to allow services to be augmented with a frontend.
 
 The frontend components are defined as `custom_components` and are loaded by the frontend loader.
+
+### Current Features.
+
+- Generate routes from the `build` directory.
+- enable `API` routes from the `openapi3_spec.yaml` file.
+- ABCI spec with healthcheck for the served frontend.
+
+```mermaid
+alphabet_in:
+  - DONE
+  - ERROR
+
+default_start_state: SetupRound
+
+final_states:
+  - DoneRound
+
+label: ComponentLoadingAbciApp
+
+start_states:
+  - SetupRound
+  - HealthcheckRound
+
+states:
+  - SetupRound
+  - HealthcheckRound
+  - DoneRound
+  - ErrorRound
+
+transition_func:
+  (SetupRound, DONE): HealthcheckRound
+  (SetupRound, ERROR): ErrorRound
+  (HealthcheckRound, DONE): DoneRound
+  (HealthcheckRound, ERROR): ErrorRound
+  (ErrorRound, DONE): SetupRound
+```
+
+
+- Independant Protocols and servers for the frontend components meaning no interaction with core skills.
+
+
 
 ## Frontend Specification
 
@@ -125,13 +165,35 @@ packages/AUTHOR/customs/COMPONENT_NAME
 │   ├── logo512.png
 ```
 
-### Current Features.
+## Agent Configuration
+In order to configre the frontend loader, the following configuration is required;
 
-- Generate routes from the `build` directory.
-- enable `API` routes from the `openapi3_spec.yaml` file.
-- ABCI spec with healthcheck for the served frontend.
-- Independant Protocols and servers for the frontend components meaning no interaction with core skills.
+A) add the frontend loader abci to an existing service.
 
+B) create a custom component for the frontend.
+
+
+This can be used to configure the frontend as so in the `aea-config.yaml` file;
+
+
+```yaml
+---
+public_id: valory/trader_abci:0.1.0
+type: skill
+models:
+  params:
+    args:
+      user_interface:
+        enabled: true
+        custom_component: tatha/trader_ui
+```
+
+
+## Roadmap 
+
+There are a number of features that are planned for the frontend loader.
+
+These will be implemented based on future requirements and feedback from the community.
 
 ### Future Features.
 
