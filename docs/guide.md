@@ -20,7 +20,7 @@ The frontend components are defined as `custom_components` and are loaded by the
 - enable `API` routes from the `openapi3_spec.yaml` file.
 - ABCI spec with healthcheck for the served frontend.
 
-```mermaid
+```yaml
 alphabet_in:
   - DONE
   - ERROR
