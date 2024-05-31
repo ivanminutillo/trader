@@ -41,6 +41,13 @@ from packages.valory.skills.abstract_round_abci.handlers import (
     TendermintHandler as BaseTendermintHandler,
 )
 
+from packages.eightballer.protocols.http.message import HttpMessage as UiHttpMessage
+
+
+class UserInterfaceHttpHandler(BaseHttpHandler):
+    """Handler for the HTTP requests of the ui_loader_abci skill."""
+    SUPPORTED_PROTOCOL = UiHttpMessage.protocol_id
+
 
 ABCIHandler = BaseABCIRoundHandler
 HttpHandler = BaseHttpHandler

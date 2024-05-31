@@ -19,7 +19,7 @@ connections: []
 contracts: []
 protocols: []
 skills:
-- eightballer/ui_loader_abci:0.1.0:bafybeic7wsqam7vydfexzjbef6xdgns56lphnz7x2w7fvm4toydrxrtfv4
+- eightballer/ui_loader_abci:0.1.0:bafybeifq6buc4ceqht7x5dw2p5gfoejpo6vy6qyn45aqrfnmgj6zyazkl4
 - valory/abstract_round_abci:0.1.0:bafybeih3enhagoql7kzpeyzzu2scpkif6y3ubakpralfnwxcvxexdyvy5i
 - valory/registration_abci:0.1.0:bafybeiek7zcsxbucjwzgqfftafhfrocvc7q4yxllh2q44jeemsjxg3rcfm
 - valory/reset_pause_abci:0.1.0:bafybeidw4mbx3os3hmv7ley7b3g3gja7ydpitr7mxbjpwzxin2mzyt5yam
@@ -79,6 +79,9 @@ models:
     class_name: LedgerApiDialogues
   params:
     args:
+      user_interface:
+        enabled: true
+        custom_component: ["default_ui", "bafybeihqsbmbgxjnzi6fwz5cfmg4mydocdtgvbhhfhizn5k3zyq7r4b2fu"]
       cleanup_history_depth: 1
       cleanup_history_depth_current: null
       drand_public_key: 868f005eb8e6e4ca0a47c8a77ceaa5309a47978a7c71bc5cce96366b5d7a569937c529eeda66c7293784a9402801af31

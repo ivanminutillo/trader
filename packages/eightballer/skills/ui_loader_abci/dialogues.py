@@ -63,6 +63,13 @@ from packages.valory.skills.abstract_round_abci.dialogues import (
 )
 
 
+class UserInterfaceHttpDialogue(BaseHttpDialogue):
+    """Dialogue class for the ui_loader_abci skill."""
+
+class UserInterfaceHttpDialogues(BaseHttpDialogues):
+    """Dialogues class for the ui_loader_abci skill."""
+
+
 AbciDialogue = BaseAbciDialogue
 AbciDialogues = BaseAbciDialogues
 
