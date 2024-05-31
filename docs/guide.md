@@ -56,7 +56,6 @@ transition_func:
 - Independant Protocols and servers for the frontend components meaning no interaction with core skills.
 
 
-
 ## Frontend Specification
 
 The frontnend directory structure is as follows;
@@ -167,7 +166,67 @@ packages/AUTHOR/customs/COMPONENT_NAME
 │   ├── logo512.png
 ```
 
+A very simple example of a `index.html` file is as follows;
+
+```html
+<!-- Simple html -->
+<!DOCTYPE html>
+<!-- We then do a couple of js api calls. curl localhost:5555/api/agent-info | jq-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trader UI</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="main.js"></script>
+    <!-- 
+        Table for the simlpe json from the api call. 
+    {
+      "service-id": null,
+      "safe-address": "0x0000000000000000000000000000000000000000",
+      "agent-address": "0xfA8d890F50B13e0bC9C7F9424b3bE45F9854C303",
+      "agent-status": "active"
+    }
+    -->
+     <!-- We make sure the table has strict lines. serperating the rows and columns. -->
+    <table style="border: 1px solid black; border-collapse: collapse; width: 100%; text-align: left;">
+        <tr>
+            <th>Service ID</th>
+            <th>Safe Address</th>
+            <th>Agent Address</th>
+            <th>Agent Status</th>
+        </tr>
+        <tr>
+            <td id="service-id"></td>
+            <td id="safe-address"></td>
+            <td id="agent-address"></td>
+            <td id="agent-status"></td>
+        </tr>
+</body>
+</html>
+
+<!-- Script to update the table after the call. -->
+
+<script>
+    fetch('http://localhost:5555/api/agent-info')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('service-id').innerText = data['service-id'];
+            document.getElementById('safe-address').innerText = data['safe-address'];
+            document.getElementById('agent-address').innerText = data['agent-address'];
+            document.getElementById('agent-status').innerText = data['agent-status'];
+        });
+</script>
+```
+
+Notice the `fetch` api call to the `/api/agent-info` route.
+
+This is an example of how the frontend can interact with the backend, i.e. the personal self-hosted agent.
+
 ## Agent Configuration
+
 In order to configre the frontend loader, the following configuration is required;
 
 A) add the frontend loader abci to an existing service.
