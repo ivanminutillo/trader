@@ -225,6 +225,11 @@ Notice the `fetch` api call to the `/api/agent-info` route.
 
 This is an example of how the frontend can interact with the backend, i.e. the personal self-hosted agent.
 
+The above page will render after alling the api to;
+
+![image](https://github.com/8ball030/trader/assets/35799987/c2369f47-8df0-44e7-bf22-3e3b7dd57bef)
+
+
 ## Agent Configuration
 
 In order to configre the frontend loader, the following configuration is required;
