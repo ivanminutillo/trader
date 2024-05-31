@@ -171,7 +171,6 @@ A very simple example of a `index.html` file is as follows;
 ```html
 <!-- Simple html -->
 <!DOCTYPE html>
-<!-- We then do a couple of js api calls. curl localhost:5555/api/agent-info | jq-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -230,6 +229,19 @@ The above page will render after calling the api to;
 ![image](https://github.com/8ball030/trader/assets/35799987/c2369f47-8df0-44e7-bf22-3e3b7dd57bef)
 
 
+To call the api of a running agent;
+
+```bash
+[I] (trader-py3.10) ➜  trader git:(main) ✗ curl localhost:5555/api/agent-info | jq
+{
+  "service-id": null,
+  "safe-address": "0x0000000000000000000000000000000000000000",
+  "agent-address": "0xa5A7daBf37E183DEC2a13E259f64A55554B2c13B",
+  "agent-status": "active"
+}
+```
+
+
 ## Agent Configuration
 
 In order to configre the frontend loader, the following configuration is required;
@@ -253,9 +265,6 @@ models:
         enabled: true
         custom_component: tatha/trader_ui
 ```
-
-
-
 
 
 ## Roadmap 
