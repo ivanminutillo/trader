@@ -111,10 +111,17 @@ from packages.valory.skills.tx_settlement_multiplexer_abci.rounds import (
     PreTxSettlementRound,
     TxSettlementMultiplexerAbciApp,
 )
+from packages.eightballer.skills.ui_loader_abci.rounds import (
+    SetupRound,
+    DoneRound,
+    ComponentLoadingAbciApp,
+)
+
 
 
 abci_app_transition_mapping: AbciAppTransitionMapping = {
-    FinishedRegistrationRound: CheckBenchmarkingModeRound,
+    FinishedRegistrationRound: SetupRound,
+    DoneRound: CheckBenchmarkingModeRound,
     BenchmarkingModeDisabledRound: UpdateBetsRound,
     FinishedMarketManagerRound: CheckStopTradingRound,
     FinishedCheckStopTradingRound: SamplingRound,
@@ -157,6 +164,7 @@ termination_config = BackgroundAppConfig(
 TraderAbciApp = chain(
     (
         AgentRegistrationAbciApp,
+        ComponentLoadingAbciApp,
         DecisionMakerAbciApp,
         MarketManagerAbciApp,
         MechInteractAbciApp,

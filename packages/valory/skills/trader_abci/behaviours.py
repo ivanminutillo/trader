@@ -56,6 +56,9 @@ from packages.valory.skills.transaction_settlement_abci.behaviours import (
 from packages.valory.skills.tx_settlement_multiplexer_abci.behaviours import (
     PostTxSettlementFullBehaviour,
 )
+from packages.eightballer.skills.ui_loader_abci.behaviours import (
+    ComponentLoadingRoundBehaviour,
+)
 
 
 class TraderConsensusBehaviour(AbstractRoundBehaviour):
@@ -66,6 +69,7 @@ class TraderConsensusBehaviour(AbstractRoundBehaviour):
 
     behaviours: Set[Type[BaseBehaviour]] = {
         *AgentRegistrationRoundBehaviour.behaviours,
+        *ComponentLoadingRoundBehaviour.behaviours,
         *AgentDecisionMakerRoundBehaviour.behaviours,
         *MarketManagerRoundBehaviour.behaviours,
         *MechInteractRoundBehaviour.behaviours,
