@@ -8,7 +8,13 @@
 4. [Roadmap](#roadmap)
 
 ## Introduction
-The purpose the frontend loader ui ABCI is to provide an easy means for frontend developers the ability to develop frontends to be served by Agents.
+The purpose the frontend loader ui ABCI is to provide an easy means for frontend developers the ability to create and co-own frontends to be served by Agents.
+
+This represents a new way to interact with agents and services, by providing a frontend that can be served by the agent.
+
+Additionally, as this should enable a much broader range of applications and services to be built on top of the agents, as now additional languages other than the underlying python can be used within Olas EcoSystem.
+
+The enables developers other than python developers to benefit from the developer incentives enabled by the Olas Protocol.
 
 The ABCI frontend loader is designed to not interfer with agent development and applications, but rather to allow services to be augmented with a frontend.
 
