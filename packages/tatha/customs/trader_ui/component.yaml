@@ -2,12 +2,13 @@ name: trader_ui
 author: tatha
 version: 0.1.0
 type: custom
-description: Custom UI representing an interface for the trader skill.
+description: Custom UI representing a user interface for the trader skill.
 license: Apache-2.0
 aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   __init__.py: bafybeih4oyyzgld4vqtbub6zrcrrfofbhmhbr37rvoxuhzchn3bhhjs7za
-  openapi3_spec.yaml: bafybeielkk4grrsmuhhab6sty4mm5x4ixo6y3fcnczhcudtyhguihrwxly
+  build/index.html: bafybeidtlac2qbn6oohhyyuvbwz36dqxofyiv7s4tsipwbrsl5mnbn65ga
+  openapi3_spec.yaml: bafybeiagdbghwj4t4o7uctojvtkjp7i6zxpwu6dltjsawcaeuteyipftty
 fingerprint_ignore_patterns: []
 dependencies: {}
 api_spec: open_api_spec.yaml

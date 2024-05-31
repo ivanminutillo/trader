@@ -142,7 +142,6 @@ class SetupBehaviour(ComponentLoadingBaseBehaviour):
     """SetupBehaviour"""
 
     matching_round: Type[AbstractRound] = SetupRound
-    frontend_directory = Path(DEFAULT_FRONTEND_DIR)
 
     # TODO: implement logic required to set payload content for synchronization
     def async_act(self) -> Generator:
@@ -168,31 +167,25 @@ class SetupBehaviour(ComponentLoadingBaseBehaviour):
 
     def load_ui(self,) -> bool:
         """Load the UI from the setup_data."""
-        # load the UI from 
-        ipfs_tool = IPFSTool(get_ipfs_node_multiaddr())
-        try:
-            ipfs_tool.download(self.params.user_interface_ipfs_hash, DEFAULT_FRONTEND_DIR)
-        except DownloadError as e:
-            self.context.logger.error(str(e))
-            self.context.logger.error("Failed to download frontend from IPFS.")
-            yield Event.ERROR
-
-        # we generate a mapping of routes based on all the files found in the frontend directory
-        self.context.logger.info("Generating routes...")
-        self.context.shared_state["routes"] = self.generate_routes()
-        self.context.logger.info("Routes generated.")
+        author, component_name = self.params.user_interface_name.split("/")
+        directory = Path("vendor") / author / "customs" / component_name / "build"
+        self.context.logger.info(f"Generating routes for the UI in {directory}...")
+        self.context.shared_state["routes"] = self.generate_routes(directory)
+        self.context.logger.info(f"Routes generated: {len(self.context.shared_state['routes'])} routes.")
+        if not self.context.shared_state["routes"]:
+            return Event.ERROR
         yield Event.DONE
 
-    def generate_routes(self) -> dict:
+    def generate_routes(self, directory) -> dict:
         """
         We generate a mapping of routes based on all the files found in the frontend directory.
         We read the files into memory and store them in the routes dict.
         """
         routes = {}
-        for path in glob(f"{self.frontend_directory}/**/*", recursive=True):
+        for path in glob(str(Path(directory) / "**" / "*"), recursive=True):
             data = Path(path)
             if data.is_file():
-                route = data.relative_to(self.frontend_directory / "build")
+                route = data.relative_to(str(directory))
                 routes[str(route)] = data.read_bytes()
         return routes
 

@@ -47,9 +47,8 @@ class UserInterfaceLoaderParams(BaseParams):
         user_interface_config = kwargs.get("user_interface")
         self.user_interface_enabled = user_interface_config.get('enabled', False)
         if self.user_interface_enabled:
-            custom_component_name, ipfs_hash = user_interface_config.get('custom_component',)
+            custom_component_name = user_interface_config.get('custom_component',)
             self.user_interface_name = custom_component_name
-            self.user_interface_ipfs_hash = ipfs_hash
         super().__init__(*args, **kwargs)
 
 
