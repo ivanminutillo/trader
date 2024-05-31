@@ -45,6 +45,9 @@ handlers:
   http:
     args: {}
     class_name: HttpHandler
+  user_interface_http:
+    args: {}
+    class_name: UserInterfaceHttpHandler
   ipfs:
     args: {}
     class_name: IpfsHandler
@@ -77,6 +80,9 @@ models:
   ledger_api_dialogues:
     args: {}
     class_name: LedgerApiDialogues
+  user_interface_http_dialogues:
+    args: {}
+    class_name: UserInterfaceHttpDialogues
   params:
     args:
       user_interface:

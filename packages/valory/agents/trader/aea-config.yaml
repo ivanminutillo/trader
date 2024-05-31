@@ -9,6 +9,8 @@ fingerprint:
   __init__.py: bafybeighcq4pmuzte6vhvvprrvo563vzghkoit2h6qdqxf2ma5bghevkee
 fingerprint_ignore_patterns: []
 connections:
+- eightballer/http_server:0.1.0:bafybeib4t4ay6kfjokq3cydparpzs4zllyl2yujvfsbc24xogwyxsswaqy
+- eightballer/http_client:0.1.0:bafybeib4t4ay6kfjokq3cydparpzs4zllyl2yujvfsbc24xogwyxsswaqy
 - valory/abci:0.1.0:bafybeiclexb6cnsog5yjz2qtvqyfnf7x5m7tpp56hblhk3pbocbvgjzhze
 - valory/http_client:0.23.0:bafybeih5vzo22p2umhqo52nzluaanxx7kejvvpcpdsrdymckkyvmsim6gm
 - valory/ipfs:0.1.0:bafybeihndk6hohj3yncgrye5pw7b7w2kztj3avby5u5mfk2fpjh7hqphii
@@ -29,6 +31,7 @@ contracts:
 - valory/transfer_nft_condition:0.1.0:bafybeicgpoag2lymofz3vnen76q7gtig5hzimn32o57php4uerr6t25em4
 - valory/erc20:0.1.0:bafybeigvftdxjgnlsoemst5d57cor36idywk7bwcfj2bjqijxdxo3xpurq
 protocols:
+- eightballer/http:0.1.0:bafybeib4t4ay6kfjokq3cydparpzs4zllyl2yujvfsbc24xogwyxsswaqy
 - open_aea/signing:1.0.0:bafybeihv62fim3wl2bayavfcg3u5e5cxu3b7brtu4cn5xoxd6lqwachasi
 - valory/abci:0.1.0:bafybeiaqmp7kocbfdboksayeqhkbrynvlfzsx4uy4x6nohywnmaig4an7u
 - valory/acn:1.1.0:bafybeidluaoeakae3exseupaea4i3yvvk5vivyt227xshjlffywwxzcxqe
@@ -113,6 +116,9 @@ models:
       log_dir: ${str:/benchmarks}
   params:
     args:
+      user_interface:
+        enabled: true
+        custom_component: ["default_ui", "bafybeihqsbmbgxjnzi6fwz5cfmg4mydocdtgvbhhfhizn5k3zyq7r4b2fu"]
       setup:
         all_participants: ${list:["0x0000000000000000000000000000000000000000"]}
         consensus_threshold: ${int:null}
@@ -273,3 +279,10 @@ config:
       chain_id: ${int:100}
       poa_chain: ${bool:false}
       default_gas_price_strategy: ${str:eip1559}
+---
+public_id: eightballer/http_server:0.1.0:bafybeib4t4ay6kfjokq3cydparpzs4zllyl2yujvfsbc24xogwyxsswaqy
+type: connection
+config:
+  host: 0.0.0.0
+  port: 5555
+  target_skill_id: "valory/trader_abci:0.1.0"

@@ -179,7 +179,7 @@ class SetupBehaviour(ComponentLoadingBaseBehaviour):
 
         # we generate a mapping of routes based on all the files found in the frontend directory
         self.context.logger.info("Generating routes...")
-        self.routes = self.generate_routes()
+        self.context.shared_state["routes"] = self.generate_routes()
         self.context.logger.info("Routes generated.")
         yield Event.DONE
 
