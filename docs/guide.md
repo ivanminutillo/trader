@@ -232,7 +232,7 @@ The above page will render after calling the api to;
 To call the api of a running agent;
 
 ```bash
-[I] (trader-py3.10) ➜  trader git:(main) ✗ curl localhost:5555/api/agent-info | jq
+curl localhost:5555/api/agent-info | jq
 {
   "service-id": null,
   "safe-address": "0x0000000000000000000000000000000000000000",
