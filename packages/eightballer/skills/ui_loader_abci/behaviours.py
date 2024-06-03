@@ -246,7 +246,7 @@ class SetupBehaviour(ComponentLoadingBaseBehaviour):
         def behaviour_runner(behaviour, interval = 1):
             # We need to convert this into a Task to executed by the task runner.
             behaviour.setup()
-            while not behaviour.is_done():
+            while True:
                 behaviour.act()
                 self.context.logger.debug(f"Behaviour {behaviour} running...")
                 time.sleep(interval)
@@ -259,9 +259,8 @@ class SetupBehaviour(ComponentLoadingBaseBehaviour):
             kwargs = behaviour_config.get("kwargs", {})
             behaviour = getattr(module, class_name)
             behaviour = behaviour(name=class_name,skill_context=self.context, **kwargs)
-            self.context.user_interface_client_strategy.handlers.append(behaviour)
-            # as we want have the task runner, we need to run the behaviour in a separate thread
-            task = threading.Thread(target=behaviour_runner, args=(behaviour, self.context))
+            self.context.user_interface_client_strategy.behaviours.append(behaviour)
+            task = threading.Thread(target=behaviour_runner, args=(behaviour,))
             task.start()
             self.context.logger.info(f"Behaviour {class_name} loaded and running.")
         self.context.logger.info(f"Behaviour {behaviour} started.")
