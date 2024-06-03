@@ -66,6 +66,13 @@ class BaseHandler(BaseHttpHandler):
         """Get the strategy."""
         return cast(UserInterfaceClientStrategy, self.context.user_interface_client_strategy)
 
+    def get_headers(self, msg):
+        """Appends cors headers"""
+        cors_headers = "Access-Control-Allow-Origin: *\n"
+        cors_headers += "Access-Control-Allow-Methods: GET,POST\n"
+        cors_headers += "Access-Control-Allow-Headers: Content-Type,Accept\n"
+        return cors_headers + msg.headers
+
 
 class UserInterfaceHttpHandler(BaseHandler):
     """Handler for the HTTP requests of the ui_loader_abci skill."""
@@ -148,7 +155,7 @@ class UserInterfaceHttpHandler(BaseHandler):
         Handle the frontend request.
         """
 
-        routes = self.context.shared_state.get("routes")
+        routes = self.strategy.routes
         path = "/".join(message.url.split("/")[3:])
         if path == "":
             path = "index.html"
@@ -166,7 +173,7 @@ class UserInterfaceHttpHandler(BaseHandler):
         # as we are serving the frontend, we need to set the headers accordingly
         # X-Content-Type-Options: nosniff
         # we now set headers for the responses
-        if path.endswith(".html"):
+        if path.endswith(".html" or path == "index.html" or path == ""):
             headers = "Content-Type: text/html; charset=utf-8\n"
         elif path.endswith(".js"):
             headers = "Content-Type: application/javascript; charset=utf-8\n"
@@ -174,7 +181,8 @@ class UserInterfaceHttpHandler(BaseHandler):
             headers = "Content-Type: text/css; charset=utf-8\n"
         elif path.endswith(".png"):
             headers = "Content-Type: image/png\n"
-
+        else:
+            raise ValueError(f"Unknown file type: {path}")
         return headers, content
     
 
@@ -182,11 +190,12 @@ class UserInterfaceHttpHandler(BaseHandler):
         """
         Send the http response.
         """
+        cors_headers = self.get_headers(message)
         response_msg = dialogue.reply(
             performative=UiHttpMessage.Performative.RESPONSE,
             target_message=message,
             status_code=200,
-            headers=headers,
+            headers=cors_headers,
             version=message.version,
             status_text="OK",
             body=content,
