@@ -66,12 +66,12 @@ class BaseHandler(BaseHttpHandler):
         """Get the strategy."""
         return cast(UserInterfaceClientStrategy, self.context.user_interface_client_strategy)
 
-    def get_headers(self, msg):
+    def get_headers(self, original_headers: str) -> str:
         """Appends cors headers"""
         cors_headers = "Access-Control-Allow-Origin: *\n"
         cors_headers += "Access-Control-Allow-Methods: GET,POST\n"
         cors_headers += "Access-Control-Allow-Headers: Content-Type,Accept\n"
-        return cors_headers + msg.headers
+        return cors_headers + original_headers
 
 
 class UserInterfaceHttpHandler(BaseHandler):
@@ -181,8 +181,13 @@ class UserInterfaceHttpHandler(BaseHandler):
             headers = "Content-Type: text/css; charset=utf-8\n"
         elif path.endswith(".png"):
             headers = "Content-Type: image/png\n"
+        elif path.endswith(".ico"):
+            headers = "Content-Type: image/x-icon\n"
+        elif path.endswith(".json"):
+            headers = "Content-Type: application/json; charset=utf-8\n"
         else:
-            raise ValueError(f"Unknown file type: {path}")
+            headers = "Content-Type: text/plain; charset=utf-8\n"
+        
         return headers, content
     
 
@@ -190,7 +195,7 @@ class UserInterfaceHttpHandler(BaseHandler):
         """
         Send the http response.
         """
-        cors_headers = self.get_headers(message)
+        cors_headers = self.get_headers(headers)
         response_msg = dialogue.reply(
             performative=UiHttpMessage.Performative.RESPONSE,
             target_message=message,
