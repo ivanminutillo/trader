@@ -8,17 +8,18 @@ aea_version: '>=1.0.0, <2.0.0'
 fingerprint:
   README.md: bafybeiab4xgadptz4mhvno4p6xvkh7p4peg7iuhotabydriu74dmj6ljga
   __init__.py: bafybeido7wa33h4dtleap57vzgyb4fsofk4vindsqcekyfo5i56i2rll2a
-  behaviours.py: bafybeigc6hszbu66ccajny5eh7thfgsrlr36je4mzziwp4mupgvtaeu6aa
-  composition.py: bafybeib7mrc7xjqx3qy5wlxphlsrmwvzqduf2hzn62s7fgux5contywiki
-  dialogues.py: bafybeiebofyykseqp3fmif36cqmmyf3k7d2zbocpl6t6wnlpv4szghrxbm
+  behaviours.py: bafybeien33dglqdyi33ayvxzmgekeum56dllrky3rgb5jqfirlaigc2m6u
+  composition.py: bafybeihqcmtdwp5gn4heiifcja7peax36dk6d34udijyzqjdvk2wleuzhi
+  dialogues.py: bafybeid6urxuyla4isp6npofthxcqepa7dkewukfw7wpja6job37gg53yy
   fsm_specification.yaml: bafybeigwqrxxah3c55ome4qffl7ck53hrk2uencz3lym6unfof6qakeqoe
-  handlers.py: bafybeibkiqwe7hoqccjirimd44nzeqkabc7oo74romqklssion27s5sa2a
-  models.py: bafybeicovhcparwbvqdbrofv4kxiyznuezpqxsdxqx3wkkvht7patop4e4
+  handlers.py: bafybeidfmh4xu7ak5hpeizienjh26phtem4mefievpxr6xtlpxyyo2x7xa
+  models.py: bafybeiad74fttjfbu77jgpcrnh4jds3o4i3lhivs5fbypib3xlwbyv7t5a
 fingerprint_ignore_patterns: []
 connections: []
 contracts: []
 protocols: []
 skills:
+- eightballer/ui_loader_abci:0.1.0:bafybeihqrojreiiwizvxqoqhbawxuqbyhaamciz3p7teqkpvptusglfz4i
 - valory/abstract_round_abci:0.1.0:bafybeih3enhagoql7kzpeyzzu2scpkif6y3ubakpralfnwxcvxexdyvy5i
 - valory/registration_abci:0.1.0:bafybeiek7zcsxbucjwzgqfftafhfrocvc7q4yxllh2q44jeemsjxg3rcfm
 - valory/reset_pause_abci:0.1.0:bafybeidw4mbx3os3hmv7ley7b3g3gja7ydpitr7mxbjpwzxin2mzyt5yam
@@ -44,6 +45,12 @@ handlers:
   http:
     args: {}
     class_name: HttpHandler
+  user_interface_http:
+    args: {}
+    class_name: UserInterfaceHttpHandler
+  user_interface_ws:
+    args: {}
+    class_name: UserInterfaceWsHandler
   ipfs:
     args: {}
     class_name: IpfsHandler
@@ -76,8 +83,20 @@ models:
   ledger_api_dialogues:
     args: {}
     class_name: LedgerApiDialogues
+  user_interface_http_dialogues:
+    args: {}
+    class_name: UserInterfaceHttpDialogues
+  user_interface_ws_dialogues:
+    args: {}
+    class_name: UserInterfaceWsDialogues
+  user_interface_client_strategy:
+    args: {}
+    class_name: UserInterfaceClientStrategy
   params:
     args:
+      user_interface:
+        enabled: true
+        custom_component: null
       cleanup_history_depth: 1
       cleanup_history_depth_current: null
       drand_public_key: 868f005eb8e6e4ca0a47c8a77ceaa5309a47978a7c71bc5cce96366b5d7a569937c529eeda66c7293784a9402801af31

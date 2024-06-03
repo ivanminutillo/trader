@@ -39,10 +39,18 @@ from packages.valory.skills.abstract_round_abci.handlers import (
 from packages.valory.skills.decision_maker_abci.handlers import (
     IpfsHandler as BaseIpfsHandler,
 )
+from packages.eightballer.skills.ui_loader_abci.handlers import (
+    UserInterfaceHttpHandler as BaseUserInterfaceHttpHandler,
+)
+from packages.eightballer.skills.ui_loader_abci.handlers import (
+    UserInterfaceWsHandler as BaseUserInterfaceWsHandler,
+)
 
 
 TraderHandler = ABCIRoundHandler
 HttpHandler = BaseHttpHandler
+UserInterfaceHttpHandler = BaseUserInterfaceHttpHandler
+UserInterfaceWsHandler = BaseUserInterfaceWsHandler
 SigningHandler = BaseSigningHandler
 LedgerApiHandler = BaseLedgerApiHandler
 ContractApiHandler = BaseContractApiHandler

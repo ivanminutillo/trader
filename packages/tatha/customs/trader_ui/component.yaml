@@ -1,0 +1,23 @@
+name: trader_ui
+author: tatha
+version: 0.1.0
+type: custom
+description: Custom UI representing a user interface for the trader skill.
+license: Apache-2.0
+aea_version: '>=1.0.0, <2.0.0'
+fingerprint:
+  __init__.py: bafybeih4oyyzgld4vqtbub6zrcrrfofbhmhbr37rvoxuhzchn3bhhjs7za
+  behaviours.py: bafybeicmurqr56pse6hvgs2g4l4x6mthsw5ory23p6s67ant4pqckkvn6q
+  build/index.html: bafybeidtlac2qbn6oohhyyuvbwz36dqxofyiv7s4tsipwbrsl5mnbn65ga
+  handler.py: bafybeibgcafbdogrm6oezh3izkviwfyzjc7kqapm6cpepmokj734ye5p3a
+  openapi3_spec.yaml: bafybeiagdbghwj4t4o7uctojvtkjp7i6zxpwu6dltjsawcaeuteyipftty
+fingerprint_ignore_patterns: []
+dependencies: {}
+api_spec: open_api3_spec.yaml
+frontend_dir: build
+behaviours:
+- class_name: LogReadingBehaviour
+  args: {}
+handlers:
+- class_name: PingPongHandler
+  args: {}
